@@ -1,0 +1,56 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8" >
+	<title>message test</title>
+	<style type="text/css">
+	.message-box{
+		height: 300px;
+		width: 100%;
+		text-align: center;
+		line-height: 300px;
+		font-size: 20px;
+	}
+	.message-before{
+		background: #EDA8A8;
+	}
+	.message-after{
+		background: #A8DDED;
+	}
+	.hide{
+		display: none;
+	}
+
+	</style>
+</head>
+<body>
+	<div class="message-box message-before">
+		<h1>message-before</h1>
+	</div>
+	<div class="message-box message-after hide">
+		<h1>message-after</h1>
+	</div>
+	
+</body>
+</html>
+<script type="text/javascript" src="//cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+<script type="text/javascript">
+$(function(){
+	fetchResult()
+	function fetchResult(){
+		$.ajax({
+		  url: "/fetchPayResult",
+		  data:{
+		  	key:'jsjshhahsxxxxhhh'
+		  }
+		}).done(function(data) {
+		  console.log(data)
+		  if(data.isPayed){
+		  	$('.message-before').hide()
+		  	$('.message-after').show()
+
+		  }
+		});
+	}
+})
+</script>
